@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -27,13 +26,11 @@ import java.util.logging.Logger;
 
 public class TinderCardView extends FrameLayout implements View.OnTouchListener {
 
-    // region Constants
     private static final float CARD_ROTATION_DEGREES = 40.0f;
     private static final float BADGE_ROTATION_DEGREES = 15.0f;
     private static final int DURATION = 300;
-    // endregion
 
-    // region Views
+
     private AppCompatImageView imageView;
     private TextView displayNameTextView;
     private TextView usernameTextView;
@@ -41,7 +38,7 @@ public class TinderCardView extends FrameLayout implements View.OnTouchListener 
     private TextView nopeTextView;
     // endregion
 
-    // region Member Variables
+
     private float oldX;
     private float oldY;
     private float newX;
@@ -52,9 +49,9 @@ public class TinderCardView extends FrameLayout implements View.OnTouchListener 
     private float leftBoundary;
     private int screenWidth;
     private int padding;
-    // endregion
 
-    // region Constructors
+
+
     public TinderCardView(Context context) {
         super(context);
         init(context, null);
@@ -69,9 +66,7 @@ public class TinderCardView extends FrameLayout implements View.OnTouchListener 
         super(context, attrs, defStyle);
         init(context, attrs);
     }
-    // endregion
 
-    // region View.OnTouchListener Methods
     @Override
     public boolean onTouch(final View view, MotionEvent motionEvent) {
         TinderStackLayout tinderStackLayout = ((TinderStackLayout)view.getParent());
@@ -258,8 +253,4 @@ public class TinderCardView extends FrameLayout implements View.OnTouchListener 
             tv.setText(username);
         }
     }
-
-
-
-    // endregion
 }

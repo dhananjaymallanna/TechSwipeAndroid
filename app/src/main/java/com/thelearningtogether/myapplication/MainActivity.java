@@ -1,11 +1,14 @@
 package com.thelearningtogether.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.thelearningtogether.myapplication.models.User;
 import com.thelearningtogether.myapplication.ui.TinderCardView;
 import com.thelearningtogether.myapplication.ui.TinderStackLayout;
@@ -15,21 +18,17 @@ import rx.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends AppCompatActivity {
 
-    // region Constants
+
     private static final int STACK_SIZE = 5;
-    // endregion
 
-    // region Views
     private TinderStackLayout tinderStackLayout;
-    // endregion
 
-    // region Member Variables
     private String[] displayNames, userNames, avatarUrls;
     private int index = 0;
-    // endregion
 
-    // region Listeners
-    // endregion
+
+    private FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         displayNames = getResources().getStringArray(R.array.display_names);
         userNames = getResources().getStringArray(R.array.usernames);
         avatarUrls = getResources().getStringArray(R.array.avatar_urls);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
 
         tinderStackLayout = (TinderStackLayout) findViewById(R.id.tsl);
 
@@ -47,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
             tc.bind(getUser(index));
             tinderStackLayout.addCard(tc);
         }
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
 
         tinderStackLayout.getPublishSubject()
                 .observeOn(AndroidSchedulers.mainThread()) // UI Thread
@@ -87,4 +94,9 @@ public class MainActivity extends AppCompatActivity {
         return user;
     }
     // endregion
+
+    public void openNewActivity(){
+        Intent intent = new Intent(this, NewArticle.class);
+        startActivity(intent);
+    }
 }

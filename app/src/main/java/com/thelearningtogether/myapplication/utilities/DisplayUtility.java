@@ -9,7 +9,6 @@ import android.view.WindowManager;
 
 public class DisplayUtility {
 
-    // region Utility Methods
     public static int dp2px(Context context, int dp) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
@@ -25,5 +24,4 @@ public class DisplayUtility {
         ((Activity) context).getWindowManager().getDefaultDisplay().getSize(size);
         return size.x;
     }
-    // endregion
 }

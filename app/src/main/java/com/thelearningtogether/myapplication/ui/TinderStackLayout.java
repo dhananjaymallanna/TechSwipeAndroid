@@ -22,18 +22,14 @@ import rx.subscriptions.CompositeSubscription;
 
 public class TinderStackLayout extends FrameLayout {
 
-    // region Constants
-    private static final int DURATION = 300;
-    // endregion
 
-    // region Member Variables
+    private static final int DURATION = 300;
+
     private PublishSubject<Integer> publishSubject = PublishSubject.create();
     private CompositeSubscription compositeSubscription;
     private int screenWidth;
     private int yMultiplier;
-    // endregion
 
-    // region Constructors
     public TinderStackLayout(Context context) {
         super(context);
         init();
@@ -48,7 +44,6 @@ public class TinderStackLayout extends FrameLayout {
         super(context, attrs, defStyle);
         init();
     }
-    // endregion
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
@@ -70,7 +65,7 @@ public class TinderStackLayout extends FrameLayout {
         compositeSubscription.unsubscribe();
     }
 
-    // region Helper Methods
+    // Helper Methods
     private void init(){
         setClipChildren(false);
 
@@ -143,5 +138,4 @@ public class TinderStackLayout extends FrameLayout {
             .setInterpolator(new AnticipateOvershootInterpolator())
             .setDuration(DURATION);
     }
-    // endregion
 }
